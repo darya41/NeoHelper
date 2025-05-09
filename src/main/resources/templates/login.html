@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цифровой помощник неонатолога - Вход</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Цифровой помощник неонатолога</h1>
+        </div>
+        
+        <div class="container">
+            <div class="content">
+                <span class="logo">NeoHelper</span>
+                <p class="description">Войдите в свой аккаунт</p>
+            </div>
+            
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Логин</label>
+                    <input type="text" id="username" name="username" class="input-field" placeholder="Ваш логин" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Ваш пароль" required>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">Запомнить меня</label>
+                    </div>                  
+                </div>
+                
+                <div th:if="${param.error}" class="alert alert-danger">
+                    Неверный логин или пароль
+                </div>
+                
+                <button type="submit" class="button">
+                    Войти
+                </button>
+            </form>
+            
+            <div class="register">
+                <p>Ещё нет аккаунта? 
+                    <a th:href="@{/register}">Зарегистрироваться</a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 NeoHelper. Все права защищены.</p>
+        </div>
+    </div>
+</body>
+</html>
