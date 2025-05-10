@@ -8,35 +8,29 @@
 </head>
 <body>
     <div class="container">
-        <!-- Проверка авторизации через переданный в модель объект -->
         <div th:unless="${sessionDoctor}">
             <p class="error-message">Доступ запрещён. Пожалуйста, <a th:href="@{/login}">войдите в систему</a>.</p>
         </div>
 
         <div th:if="${sessionDoctor}">
-            <!-- Шапка -->
             <div class="header">
                 <h1>NeoHelper</h1>
                 <a th:href="@{/main}" class="back-link">← Назад к списку пациентов</a>
             </div>
 
-            <!-- Основной контент -->
             <div class="profile-card">
                 <div class="profile-layout">
-                    <!-- Аватар с инициалами -->
                     <div class="avatar">
                         <span th:text="${#strings.substring(sessionDoctor.lastName, 0, 1) + 
                                       #strings.substring(sessionDoctor.firstName, 0, 1)}">
                             ИП
                         </span>
                     </div>
-
-                    <!-- Информация о враче -->
+                    
                     <div class="profile-info">
                         <h2>Профиль врача</h2>
                         
                         <div class="info-grid">
-                            <!-- Левая колонка -->
                             <div>
                                 <div class="info-row">
                                     <span class="info-label">Фамилия:</span>
@@ -55,8 +49,7 @@
                                     <span class="info-value" th:text="${sessionDoctor.login} ?: '—'">—</span>
                                 </div>
                             </div>
-
-                            <!-- Правая колонка -->
+                            
                             <div>
                                 <div class="info-row">
                                     <span class="info-label">Специализация:</span>
@@ -87,10 +80,9 @@
                 </div>
             </div>
 
-            <!-- Кнопки действий -->
             <div class="button-group">
-                <button class="cancel-button" onclick="window.history.back()">Отмена</button>
-                <a th:href="@{/doctor/profile/edit}" class="edit-button">Редактировать профиль</a>
+                 <a th:href="@{/doctor/back}" class="cancel-button">Назад</a>
+                <a th:href="@{/doctor/edit}" class="edit-button">Редактировать профиль</a>
             </div>
         </div>
     </div>
