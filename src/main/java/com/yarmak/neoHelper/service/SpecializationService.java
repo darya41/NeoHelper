@@ -25,4 +25,9 @@ public class SpecializationService {
     public Optional<Specialization> findById(Long id) throws DaoException {
         return specializationRepository.findById(id);
     }
+
+	public Optional<Specialization> findById(int id) {
+		  return specializationRepository.findById(id);
+	}
+
 }

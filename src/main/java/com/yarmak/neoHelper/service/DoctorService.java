@@ -20,4 +20,8 @@ public class DoctorService {
         return doctorRepository.findById(doctorId);
     }
 
+	public Doctor update(Doctor updatedDoctor) {
+		return doctorRepository.save(updatedDoctor);
+	}
+
 }
