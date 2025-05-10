@@ -1,34 +1,51 @@
 package com.yarmak.neoHelper.service;
 
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 
 import com.yarmak.neoHelper.dao.AuthRepository;
 import com.yarmak.neoHelper.model.Doctor;
+import com.yarmak.neoHelper.util.CustomPasswordEncoder;
 
 @Service
 public class AuthService {
     
     private final AuthRepository  authRepository;
+    private final CustomPasswordEncoder passwordEncoder;
     
-    public AuthService(AuthRepository authRepository) {
+    public AuthService(AuthRepository authRepository, CustomPasswordEncoder passwordEncoder) {
         this.authRepository = authRepository;
+        this.passwordEncoder = passwordEncoder;
     }
     
     public Doctor authenticate(String login, String password) {
-        Doctor doctor = authRepository.findByLogin(login)
-            .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
-        
-        String hashedPassword = DigestUtils.md5DigestAsHex(password.getBytes());
-        
-        if (!doctor.getPassword().equals(hashedPassword)) {
-            throw new RuntimeException("Неверный пароль");
+        try {
+            Doctor doctor = authRepository.findByLogin(login)
+                .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
+
+            if (!passwordEncoder.matches(password, doctor.getPassword())) {
+                throw new RuntimeException("Неверный пароль");
+            }
+
+            return doctor;
+        } catch (RuntimeException e) {
+            throw new ServiceException("Ошибка авторизации", e);
         }
-        
-        return doctor;
+    }
+
+     
+    public boolean emailExists(String email) {
+        return authRepository.existsByWorkEmail(email);
     }
     
-    public static String hashPassword(String password) {
-        return DigestUtils.md5DigestAsHex(password.getBytes());
+    public boolean loginExists(String login) {
+        return authRepository.existsByLogin(login);
     }
+
+    public void registerDoctor(Doctor doctor) {
+        String encodedPassword = passwordEncoder.encode(doctor.getPassword());
+        doctor.setPassword(encodedPassword);
+        authRepository.save(doctor);
+    }
+
 }

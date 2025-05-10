@@ -1,11 +1,12 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f9ff;
+}
+.bogy-login{
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 50px;
-
 }
 .container {
     max-width: 100%;
@@ -123,4 +124,236 @@ label {
     color: #6b7280;
 }
 
+.body-reg {
+    background-color: #f3f4f6; 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex-grow: 1;
+    width: 90%;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.centered-items {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.form-container, .info-container {
+    flex: 1;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.title, h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d3748;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+}
+
+.input-field:focus {
+    border-color: #0ea5e9;
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    
+}
+
+.checkbox-container input {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    
+}
+.checkbox-container label {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.checkbox-container a {
+    color: #0284c7;
+    text-decoration: none;
+    
+}
+
+.checkbox-container a:hover {
+    text-decoration: underline;
+}
+.button {
+    width: 100%;
+    background-color: #0284c7;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.button:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/**/
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-main h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    color: #0056b3;
+}
+
+.profile-link svg {
+    margin-right: 4px;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.header h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 250px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.patients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.patient-card {
+    background-color: white;
+    padding: 16px;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.patient-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-id {
+    font-weight: 600;
+    color: #555;
+}
+
+.patient-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+}
+
+.patient-details {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.button-container {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.add-patient-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.add-patient-button:hover {
+    background-color: #0056b3;
+}
+
+.add-patient-button svg {
+    margin-right: 8px;
+}

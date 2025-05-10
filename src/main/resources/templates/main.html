@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoHelper - Пациенты</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header-main">
+            <h1>NeoHelper</h1>
+            <a th:href="@{/profile}" class="profile-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                Личный кабинет
+            </a>
+        </div>
+
+        <div class="container-title">
+            <div class="header-title">
+                <h2>Список пациентов</h2>
+                <div class="search-container">
+                    <input type="text" placeholder="Введите ФИО матери" class="search-input" th:value="${searchQuery}">
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h2>Список пациентов</h2>
+            <div th:if="${patients != null and !patients.empty}">
+                <div class="patients-list">
+                    <div class="patient-card" th:each="patient : ${patients}">
+                        <div class="patient-info">
+                            <div class="patient-name" th:text="${patient.motherFullName}">Елизавета Константиновна Константинопольская</div>
+                        </div>
+                        <div class="patient-details">
+                            <div>Количество родов: <span th:text="${patient.deliveriesCount}"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${patients == null or patients.empty}" class="no-patients-message">
+                <p>Нет доступных пациентов. Нажмите "Добавить роженицу", чтобы создать новую запись.</p>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a th:href="@{/patients/add}" class="add-patient-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Добавить роженицу
+            </a>
+        </div>
+    </div>
+</body>
+</html>
