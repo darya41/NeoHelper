@@ -1,4 +1,4 @@
-package com.yarmak.neoHelper.model;
+package com.yarmak.neoHelper.model.patient;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

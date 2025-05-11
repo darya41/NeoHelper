@@ -4,7 +4,7 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 
 import com.yarmak.neoHelper.dao.AuthRepository;
-import com.yarmak.neoHelper.model.Doctor;
+import com.yarmak.neoHelper.model.doctor.Doctor;
 import com.yarmak.neoHelper.util.CustomPasswordEncoder;
 
 import jakarta.transaction.Transactional;

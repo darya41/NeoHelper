@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yarmak.neoHelper.dao.DaoException;
-import com.yarmak.neoHelper.model.Doctor;
-import com.yarmak.neoHelper.model.Mother;
-import com.yarmak.neoHelper.model.Specialization;
+import com.yarmak.neoHelper.model.doctor.Doctor;
+import com.yarmak.neoHelper.model.doctor.Specialization;
+import com.yarmak.neoHelper.model.patient.Mother;
 import com.yarmak.neoHelper.service.AuthService;
 import com.yarmak.neoHelper.service.MotherService;
 import com.yarmak.neoHelper.service.SpecializationService;

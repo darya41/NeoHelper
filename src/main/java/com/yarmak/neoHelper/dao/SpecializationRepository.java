@@ -1,7 +1,8 @@
 package com.yarmak.neoHelper.dao;
 
-import com.yarmak.neoHelper.model.Specialization;
 import org.springframework.stereotype.Repository;
+
+import com.yarmak.neoHelper.model.doctor.Specialization;
 
 import java.util.Optional;
 

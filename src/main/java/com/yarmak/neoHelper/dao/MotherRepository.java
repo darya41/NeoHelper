@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.yarmak.neoHelper.model.Mother;
+import com.yarmak.neoHelper.model.patient.Mother;
 
 @Repository
 public interface MotherRepository extends JpaRepository<Mother, Integer> {

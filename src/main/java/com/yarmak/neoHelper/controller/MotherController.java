@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.yarmak.neoHelper.model.Address;
-import com.yarmak.neoHelper.model.Mother;
-import com.yarmak.neoHelper.model.Patient;
+import com.yarmak.neoHelper.model.patient.Address;
+import com.yarmak.neoHelper.model.patient.Mother;
+import com.yarmak.neoHelper.model.patient.Patient;
 import com.yarmak.neoHelper.service.AddressService;
 import com.yarmak.neoHelper.service.MotherService;
 import com.yarmak.neoHelper.service.PatientService;

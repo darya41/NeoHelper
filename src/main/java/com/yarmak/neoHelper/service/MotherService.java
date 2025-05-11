@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yarmak.neoHelper.dao.MotherRepository;
-import com.yarmak.neoHelper.model.Mother;
+import com.yarmak.neoHelper.model.patient.Mother;
 
 import jakarta.transaction.Transactional;
 

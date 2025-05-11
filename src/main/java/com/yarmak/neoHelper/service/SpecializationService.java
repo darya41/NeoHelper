@@ -1,11 +1,10 @@
 package com.yarmak.neoHelper.service;
 
-import com.yarmak.neoHelper.model.Specialization;
-
 import jakarta.transaction.Transactional;
 
 import com.yarmak.neoHelper.dao.DaoException;
 import com.yarmak.neoHelper.dao.SpecializationRepository;
+import com.yarmak.neoHelper.model.doctor.Specialization;
 
 import org.springframework.stereotype.Service;
 

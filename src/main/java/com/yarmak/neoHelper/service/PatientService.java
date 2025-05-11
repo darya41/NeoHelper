@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yarmak.neoHelper.dao.PatientRepository;
-import com.yarmak.neoHelper.model.Patient;
+import com.yarmak.neoHelper.model.patient.Patient;
 
 import jakarta.transaction.Transactional;
 

@@ -1,4 +1,4 @@
-package com.yarmak.neoHelper.model;
+package com.yarmak.neoHelper.model.doctor;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
