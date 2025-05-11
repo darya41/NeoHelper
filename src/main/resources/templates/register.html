@@ -1,170 +1,174 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация</title>
-    <link th:href="@{/css/style.css}" rel="stylesheet">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-        .wrapper {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .content {
-            flex: 1 0 auto;
-            padding-bottom: 60px;
-        }
-        .footer {
-            flex-shrink: 0;
-            height: 60px;
-            margin-top: -60px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Регистрация</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<style>
+html, body {
+	height: 100%;
+	margin: 0;
+}
 
-        .two-column-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-        .form-section {
-            background-color: white;
-            padding: 24px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .full-width {
-            grid-column: span 2;
-        }
-        @media (max-width: 768px) {
-            .two-column-form {
-                grid-template-columns: 1fr;
-            }
-            .full-width {
-                grid-column: span 1;
-            }
-        }
-    </style>
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	flex: 1 0 auto;
+	padding-bottom: 60px;
+}
+
+.footer {
+	flex-shrink: 0;
+	height: 60px;
+	margin-top: -60px;
+}
+
+.two-column-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+}
+
+.form-section {
+	background-color: white;
+	padding: 24px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.full-width {
+	grid-column: span 2;
+}
+
+@media ( max-width : 768px) {
+	.two-column-form {
+		grid-template-columns: 1fr;
+	}
+	.full-width {
+		grid-column: span 1;
+	}
+}
+</style>
 </head>
 <body class="body-reg">
-    <div class="wrapper">
-        <div class="content">
-            <div class="centered-items">
-                <div class="form-container">
-                    <h2 class="title">Регистрация</h2>
-                    <form th:action="@{/auth/registerNewDoctor}" th:object="${doctor}" method="post" class="two-column-form">
-                        <!-- Левая колонка -->
-                        <div class="form-section">
-                            <h3>Основная информация</h3>
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" th:field="*{workEmail}" 
-                                       class="input-field" placeholder="example@email.com" required>
-                                <span th:if="${#fields.hasErrors('workEmail')}" 
-                                      th:errors="*{workEmail}" class="error-message"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="login">Логин:</label>
-                                <input type="text" id="login" th:field="*{login}" 
-                                       class="input-field" placeholder="Логин" required>
-                                <span th:if="${#fields.hasErrors('login')}" 
-                                      th:errors="*{login}" class="error-message"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="password">Пароль:</label>
-                                <input type="password" id="password" th:field="*{password}" 
-                                       class="input-field" placeholder="Пароль" required>
-                                <span th:if="${#fields.hasErrors('password')}" 
-                                      th:errors="*{password}" class="error-message"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="confirmPassword">Повторите пароль:</label>
-                                <input type="password" id="confirmPassword" name="confirmPassword" 
-                                       class="input-field" placeholder="Повторите пароль" required>
-                            </div>
-                        </div>
-
-                        <!-- Правая колонка -->
-                        <div class="form-section">
-                            <h3>Персональные данные</h3>
-                            <div class="form-group">
-                                <label for="firstName">Имя:</label>
-                                <input type="text" id="firstName" th:field="*{firstName}" 
-                                       class="input-field" placeholder="Имя" required>
-                                <span th:if="${#fields.hasErrors('firstName')}" 
-                                      th:errors="*{firstName}" class="error-message"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="lastName">Фамилия:</label>
-                                <input type="text" id="lastName" th:field="*{lastName}" 
-                                       class="input-field" placeholder="Фамилия" required>
-                                <span th:if="${#fields.hasErrors('lastName')}" 
-                                      th:errors="*{lastName}" class="error-message"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="patronymic">Отчество:</label>
-                                <input type="text" id="patronymic" th:field="*{patronymic}" 
-                                       class="input-field" placeholder="Отчество">
-                            </div>
-                            
-                           <div class="form-group">
-							    <label for="specialization">Специальность:</label>
-							    <select id="specialization" name="specializationId" class="input-field" required>
-							        <option value="">Выберите специальность</option>
-							        <option th:each="spec : ${specializations}" 
-							                th:value="${spec.id}" 
-							                th:text="${spec.name}"></option>
-							    </select>
-							    <span th:if="${#fields.hasErrors('specialization')}" 
-							          th:errors="*{specialization}" class="error-message"></span>
+	<div class="wrapper">
+		<div class="content">
+			<div class="centered-items">
+				<div class="form-container">
+					<h2 class="title">Регистрация</h2>
+					<form th:action="@{/auth/registerNewDoctor}" th:object="${doctor}"
+						method="post" class="two-column-form">
+						<!-- Левая колонка -->
+						<div class="form-section">
+							<h3>Основная информация</h3>
+							<div class="form-group">
+								<label for="email">Email:</label> <input type="email" id="email"
+									th:field="*{workEmail}" class="input-field"
+									placeholder="example@email.com" required> <span
+									th:if="${#fields.hasErrors('workEmail')}"
+									th:errors="*{workEmail}" class="error-message"></span>
 							</div>
-                            
-                            <div class="form-group">
-                                <label for="workPhone">Рабочий телефон:</label>
-                                <input type="tel" id="workPhone" th:field="*{workPhone}" 
-                                       class="input-field" placeholder="+375 (XX) XXX-XX-XX">
-                            </div>
-                        </div>
 
-                        <div class="form-section full-width">
-                            <div class="form-group">
-							    <div class="checkbox-container">
-							        <input type="checkbox" id="terms" th:field="*{termsAccepted}" required>
-							        <label for="terms">
-							            Я согласен с <a href="#">условиями использования</a>
-							        </label>
-							    </div>
-							    <span th:if="${#fields.hasErrors('termsAccepted')}" 
-							          th:errors="*{termsAccepted}" class="error-message"></span>
+							<div class="form-group">
+								<label for="login">Логин:</label> <input type="text" id="login"
+									th:field="*{login}" class="input-field" placeholder="Логин"
+									required> <span th:if="${#fields.hasErrors('login')}"
+									th:errors="*{login}" class="error-message"></span>
 							</div>
-                            
-                            <button type="submit" class="button">
-                                Зарегистрироваться
-                            </button>
-                            
-                            <div class="register">
-                                <p>Уже есть аккаунт?
-                                    <a th:href="@{/auth/login}">Войти</a>
-                                </p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
-        <!-- Футер, который всегда будет внизу -->
-        <div class="footer">
-            <p>© 2025 NeoHelper. Все права защищены.</p>
-        </div>
-    </div>
+							<div class="form-group">
+								<label for="password">Пароль:</label> <input type="password"
+									id="password" th:field="*{password}" class="input-field"
+									placeholder="Пароль" required> <span
+									th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}" class="error-message"></span>
+							</div>
+
+							<div class="form-group">
+								<label for="confirmPassword">Повторите пароль:</label> <input
+									type="password" id="confirmPassword" name="confirmPassword"
+									class="input-field" placeholder="Повторите пароль" required>
+							</div>
+						</div>
+
+						<!-- Правая колонка -->
+						<div class="form-section">
+							<h3>Персональные данные</h3>
+							<div class="form-group">
+								<label for="firstName">Имя:</label> <input type="text"
+									id="firstName" th:field="*{firstName}" class="input-field"
+									placeholder="Имя" required> <span
+									th:if="${#fields.hasErrors('firstName')}"
+									th:errors="*{firstName}" class="error-message"></span>
+							</div>
+
+							<div class="form-group">
+								<label for="lastName">Фамилия:</label> <input type="text"
+									id="lastName" th:field="*{lastName}" class="input-field"
+									placeholder="Фамилия" required> <span
+									th:if="${#fields.hasErrors('lastName')}"
+									th:errors="*{lastName}" class="error-message"></span>
+							</div>
+
+							<div class="form-group">
+								<label for="patronymic">Отчество:</label> <input type="text"
+									id="patronymic" th:field="*{patronymic}" class="input-field"
+									placeholder="Отчество">
+							</div>
+
+							<div class="form-group">
+								<label for="specialization">Специальность:</label> <select
+									id="specialization" name="specializationId" class="input-field"
+									required>
+									<option value="">Выберите специальность</option>
+									<option th:each="spec : ${specializations}"
+										th:value="${spec.id}" th:text="${spec.name}"></option>
+								</select> <span th:if="${#fields.hasErrors('specialization')}"
+									th:errors="*{specialization}" class="error-message"></span>
+							</div>
+
+							<div class="form-group">
+								<label for="workPhone">Рабочий телефон:</label> <input
+									type="tel" id="workPhone" th:field="*{workPhone}"
+									class="input-field" placeholder="+375 (XX) XXX-XX-XX">
+							</div>
+						</div>
+
+						<div class="form-section full-width">
+							<div class="form-group">
+								<div class="checkbox-container">
+									<input type="checkbox" id="terms" th:field="*{termsAccepted}"
+										required> <label for="terms"> Я согласен с <a
+										href="#">условиями использования</a>
+									</label>
+								</div>
+								<span th:if="${#fields.hasErrors('termsAccepted')}"
+									th:errors="*{termsAccepted}" class="error-message"></span>
+							</div>
+
+							<button type="submit" class="button">Зарегистрироваться
+							</button>
+
+							<div class="register">
+								<p>
+									Уже есть аккаунт? <a th:href="@{/auth/login}">Войти</a>
+								</p>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Футер, который всегда будет внизу -->
+		<div class="footer">
+			<p>© 2025 NeoHelper. Все права защищены.</p>
+		</div>
+	</div>
 </body>
 </html>

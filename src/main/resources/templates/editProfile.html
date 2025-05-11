@@ -1,114 +1,120 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoHelper - Редактирование профиля</title>
-     <link th:href="@{/css/style.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoHelper - Редактирование профиля</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>NeoHelper</h1>
-            <a th:href="@{/doctor/profile}" class="back-link">← Назад к профилю</a>
-        </div>
+	<div class="container">
+		<div class="header">
+			<h1>NeoHelper</h1>
+			<a th:href="@{/doctor/profile}" class="back-link">← Назад к
+				профилю</a>
+		</div>
 
-        <div class="profile-card">
-            <h2>Редактирование профиля врача</h2>
-            
-            <form th:action="@{/doctor/update}" th:object="${doctor}" method="post">
-                <div class="form-grid">
-                    <div class="form-column">
-                        <div class="form-group">
-                            <label for="last_name" class="form-label">Фамилия</label>
-                            <input type="text" id="last_name" class="form-input" 
-                                   th:field="*{lastName}" th:value="${doctor.lastName}">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="first_name" class="form-label">Имя</label>
-                            <input type="text" id="first_name" class="form-input" 
-                                   th:field="*{firstName}" th:value="${doctor.firstName}">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="patronymic" class="form-label">Отчество</label>
-                            <input type="text" id="patronymic" class="form-input" 
-                                   th:field="*{patronymic}" th:value="${doctor.patronymic}">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="login" class="form-label">Логин</label>
-                            <input type="text" id="login" class="form-input" 
-                                   th:field="*{login}" th:value="${doctor.login}">
-                        </div>
-                    </div>
-                    
-                    <div class="form-column">
-                        <div class="form-group">
-                            <label for="specialization" class="form-label">Специализация</label>
-                            <select id="specialization" class="form-input" th:field="*{specialization}">
-                                <option th:each="spec : ${specializations}" 
-                                        th:value="${spec.id}" 
-                                        th:text="${spec.name}"
-                                        th:selected="${spec.id == doctor.specialization.id}">
-                                </option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="work_phone" class="form-label">Рабочий телефон</label>
-                            <input type="tel" id="work_phone" class="form-input" 
-                                   th:field="*{workPhone}" th:value="${doctor.workPhone}">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="personal_phone" class="form-label">Личный телефон</label>
-                            <input type="tel" id="personal_phone" class="form-input" 
-                                   th:field="*{personalPhone}" th:value="${doctor.personalPhone}">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="work_email" class="form-label">Рабочая почта</label>
-                            <input type="email" id="work_email" class="form-input" 
-                                   th:field="*{workEmail}" th:value="${doctor.workEmail}">
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="department_floor" class="form-label">Этаж</label>
-                                <input type="number" id="department_floor" class="form-input" 
-                                       th:field="*{departmentFloor}" th:value="${doctor.departmentFloor}">
-                            </div>
-                            <div class="form-group">
-                                <label for="department_room" class="form-label">Кабинет</label>
-                                <input type="text" id="department_room" class="form-input" 
-                                       th:field="*{departmentRoom}" th:value="${doctor.departmentRoom}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="password-section">
-                    <h3>Смена пароля</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="current_password" class="form-label">Текущий пароль</label>
-                            <input type="password" id="current_password" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="new_password" class="form-label">Новый пароль</label>
-                            <input type="password" id="new_password" class="form-input">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-actions">
-                    <a th:href="@{/doctor/profile}" class="cancel-button">Отмена</a>
-                    <button type="submit" class="submit-button">Сохранить изменения</button>
-                </div>
-            </form>
-        </div>
-    </div>
+		<div class="profile-card">
+			<h2>Редактирование профиля врача</h2>
+
+			<form th:action="@{/doctor/update}" th:object="${doctor}"
+				method="post">
+				<div class="form-grid">
+					<div class="form-column">
+						<div class="form-group">
+							<label for="last_name" class="form-label">Фамилия</label> <input
+								type="text" id="last_name" class="form-input"
+								th:field="*{lastName}" th:value="${doctor.lastName}">
+						</div>
+
+						<div class="form-group">
+							<label for="first_name" class="form-label">Имя</label> <input
+								type="text" id="first_name" class="form-input"
+								th:field="*{firstName}" th:value="${doctor.firstName}">
+						</div>
+
+						<div class="form-group">
+							<label for="patronymic" class="form-label">Отчество</label> <input
+								type="text" id="patronymic" class="form-input"
+								th:field="*{patronymic}" th:value="${doctor.patronymic}">
+						</div>
+
+						<div class="form-group">
+							<label for="login" class="form-label">Логин</label> <input
+								type="text" id="login" class="form-input" th:field="*{login}"
+								th:value="${doctor.login}">
+						</div>
+					</div>
+
+					<div class="form-column">
+						<div class="form-group">
+							<label for="specialization" class="form-label">Специализация</label>
+							<select id="specialization" class="form-input"
+								th:field="*{specialization}">
+								<option th:each="spec : ${specializations}"
+									th:value="${spec.id}" th:text="${spec.name}"
+									th:selected="${spec.id == doctor.specialization.id}">
+								</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="work_phone" class="form-label">Рабочий
+								телефон</label> <input type="tel" id="work_phone" class="form-input"
+								th:field="*{workPhone}" th:value="${doctor.workPhone}">
+						</div>
+
+						<div class="form-group">
+							<label for="personal_phone" class="form-label">Личный
+								телефон</label> <input type="tel" id="personal_phone" class="form-input"
+								th:field="*{personalPhone}" th:value="${doctor.personalPhone}">
+						</div>
+
+						<div class="form-group">
+							<label for="work_email" class="form-label">Рабочая почта</label>
+							<input type="email" id="work_email" class="form-input"
+								th:field="*{workEmail}" th:value="${doctor.workEmail}">
+						</div>
+
+						<div class="form-row">
+							<div class="form-group">
+								<label for="department_floor" class="form-label">Этаж</label> <input
+									type="number" id="department_floor" class="form-input"
+									th:field="*{departmentFloor}"
+									th:value="${doctor.departmentFloor}">
+							</div>
+							<div class="form-group">
+								<label for="department_room" class="form-label">Кабинет</label>
+								<input type="text" id="department_room" class="form-input"
+									th:field="*{departmentRoom}"
+									th:value="${doctor.departmentRoom}">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="password-section">
+					<h3>Смена пароля</h3>
+					<div class="form-row">
+						<div class="form-group">
+							<label for="current_password" class="form-label">Текущий
+								пароль</label> <input type="password" id="current_password"
+								class="form-input">
+						</div>
+						<div class="form-group">
+							<label for="new_password" class="form-label">Новый пароль</label>
+							<input type="password" id="new_password" class="form-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<a th:href="@{/doctor/profile}" class="cancel-button">Отмена</a>
+					<button type="submit" class="submit-button">Сохранить
+						изменения</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

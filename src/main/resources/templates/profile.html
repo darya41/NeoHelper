@@ -1,90 +1,98 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoHelper - Профиль врача</title>
-     <link th:href="@{/css/style.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoHelper - Профиль врача</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div th:unless="${sessionDoctor}">
-            <p class="error-message">Доступ запрещён. Пожалуйста, <a th:href="@{/login}">войдите в систему</a>.</p>
-        </div>
+	<div class="container">
+		<div th:unless="${sessionDoctor}">
+			<p class="error-message">
+				Доступ запрещён. Пожалуйста, <a th:href="@{/login}">войдите в
+					систему</a>.
+			</p>
+		</div>
 
-        <div th:if="${sessionDoctor}">
-            <div class="header">
-                <h1>NeoHelper</h1>
-                <a th:href="@{/main}" class="back-link">← Назад к списку пациентов</a>
-            </div>
+		<div th:if="${sessionDoctor}">
+			<div class="header">
+				<h1>NeoHelper</h1>
+				<a th:href="@{/main}" class="back-link">← Назад к списку
+					пациентов</a>
+			</div>
 
-            <div class="profile-card">
-                <div class="profile-layout">
-                    <div class="avatar">
-                        <span th:text="${#strings.substring(sessionDoctor.lastName, 0, 1) + 
+			<div class="profile-card">
+				<div class="profile-layout">
+					<div class="avatar">
+						<span
+							th:text="${#strings.substring(sessionDoctor.lastName, 0, 1) + 
                                       #strings.substring(sessionDoctor.firstName, 0, 1)}">
-                            ИП
-                        </span>
-                    </div>
-                    
-                    <div class="profile-info">
-                        <h2>Профиль врача</h2>
-                        
-                        <div class="info-grid">
-                            <div>
-                                <div class="info-row">
-                                    <span class="info-label">Фамилия:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.lastName} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Имя:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.firstName} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Отчество:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.patronymic} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Логин:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.login} ?: '—'">—</span>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="info-row">
-                                    <span class="info-label">Специализация:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.specialization.name} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Рабочий телефон:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.workPhone} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Личный телефон:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.personalPhone} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Рабочая почта:</span>
-                                    <span class="info-value" th:text="${sessionDoctor.workEmail} ?: '—'">—</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label">Кабинет:</span>
-                                    <span class="info-value">
-                                        Этаж <span th:text="${sessionDoctor.departmentFloor} ?: '—'">—</span>,
-                                        комната <span th:text="${sessionDoctor.departmentRoom} ?: '—'">—</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+							ИП </span>
+					</div>
 
-            <div class="button-group">
-                 <a th:href="@{/doctor/back}" class="cancel-button">Назад</a>
-                <a th:href="@{/doctor/edit}" class="edit-button">Редактировать профиль</a>
-            </div>
-        </div>
-    </div>
+					<div class="profile-info">
+						<h2>Профиль врача</h2>
+
+						<div class="info-grid">
+							<div>
+								<div class="info-row">
+									<span class="info-label">Фамилия:</span> <span
+										class="info-value" th:text="${sessionDoctor.lastName} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Имя:</span> <span class="info-value"
+										th:text="${sessionDoctor.firstName} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Отчество:</span> <span
+										class="info-value"
+										th:text="${sessionDoctor.patronymic} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Логин:</span> <span class="info-value"
+										th:text="${sessionDoctor.login} ?: '—'">—</span>
+								</div>
+							</div>
+
+							<div>
+								<div class="info-row">
+									<span class="info-label">Специализация:</span> <span
+										class="info-value"
+										th:text="${sessionDoctor.specialization.name} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Рабочий телефон:</span> <span
+										class="info-value" th:text="${sessionDoctor.workPhone} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Личный телефон:</span> <span
+										class="info-value"
+										th:text="${sessionDoctor.personalPhone} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Рабочая почта:</span> <span
+										class="info-value" th:text="${sessionDoctor.workEmail} ?: '—'">—</span>
+								</div>
+								<div class="info-row">
+									<span class="info-label">Кабинет:</span> <span
+										class="info-value"> Этаж <span
+										th:text="${sessionDoctor.departmentFloor} ?: '—'">—</span>,
+										комната <span th:text="${sessionDoctor.departmentRoom} ?: '—'">—</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="button-group">
+				<a th:href="@{/doctor/back}" class="cancel-button">Назад</a> <a
+					th:href="@{/doctor/edit}" class="edit-button">Редактировать
+					профиль</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

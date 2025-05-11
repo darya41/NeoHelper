@@ -8,7 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface AuthRepository extends JpaRepository<Doctor, Long> {
-    Optional<Doctor> findByLogin(String login);
-    boolean existsByWorkEmail(String workEmail);
-    boolean existsByLogin(String login);
+	Optional<Doctor> findByLogin(String login);
+
+	boolean existsByWorkEmail(String workEmail);
+
+	boolean existsByLogin(String login);
 }

@@ -1,609 +1,691 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f9ff;
+	font-family: 'Roboto', sans-serif;
+	background-color: #f0f9ff;
 }
-.bogy-login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
+
+.bogy-login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 50px;
 }
+
 .container {
-    max-width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
+	max-width: 100%;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
 }
 
 .header {
-    background-color: #0077b6; 
-    padding: 16px;
-    border-radius: 10px;
-    text-align: center;
+	background-color: #0077b6;
+	padding: 16px;
+	border-radius: 10px;
+	text-align: center;
 }
 
 .header h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
 }
+
 .container {
-    padding: 32px 16px;
+	padding: 32px 16px;
 }
 
 .content {
-    margin-bottom: 24px;
-    text-align: center;
+	margin-bottom: 24px;
+	text-align: center;
 }
 
 .description {
-    color: #6b7280;
-    margin-top: 8px;
+	color: #6b7280;
+	margin-top: 8px;
 }
-
 
 .logo {
-    color: #0369a1;
-    font-weight: 700;
-    font-size: 1.5rem;
+	color: #0369a1;
+	font-weight: 700;
+	font-size: 1.5rem;
 }
+
 .input-field:focus {
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+	box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
 }
+
 .btn-primary {
-    transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
+
 .btn-primary:hover {
-    background-color: #0369a1;
+	background-color: #0369a1;
 }
 
 .form-group {
-    margin-bottom: 16px;
+	margin-bottom: 16px;
 }
 
 label {
-    display: block;
-    color: #4a4a4a;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
+	display: block;
+	color: #4a4a4a;
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 8px;
 }
 
 .input-field {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    outline: none;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	outline: none;
 }
 
 .input-field:focus {
-    border-color: #0ea5e9;
+	border-color: #0ea5e9;
 }
 
 .checkbox-group {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .checkbox-group input {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
 }
+
 .button {
-    width: 100%;
-    background-color: #0284c7;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
+	width: 100%;
+	background-color: #0284c7;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 6px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
 }
 
 .register {
-    margin-top: 24px;
-    text-align: center;
-    font-size: 14px;
-    color: #6b7280;
+	margin-top: 24px;
+	text-align: center;
+	font-size: 14px;
+	color: #6b7280;
 }
 
 .register a {
-    color: #0284c7;
-    font-weight: 500;
-    text-decoration: none;
+	color: #0284c7;
+	font-weight: 500;
+	text-decoration: none;
 }
 
 .footer {
-    background-color: #f9fafb;
-    padding: 16px;
-    border-top: 1px solid #e5e7eb;
-    text-align: center;
-    font-size: 12px;
-    color: #6b7280;
+	background-color: #f9fafb;
+	padding: 16px;
+	border-top: 1px solid #e5e7eb;
+	text-align: center;
+	font-size: 12px;
+	color: #6b7280;
 }
 
 .body-reg {
-    background-color: #f3f4f6; 
-    margin: 0;
-    padding: 0;
-    width: 100%;
+	background-color: #f3f4f6;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
 .wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .content {
-    flex-grow: 1;
-    width: 90%;
-    margin: 0 auto;
-    padding: 24px;
+	flex-grow: 1;
+	width: 90%;
+	margin: 0 auto;
+	padding: 24px;
 }
 
 .centered-items {
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+	width: 100%;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
 }
 
 .form-container, .info-container {
-    flex: 1;
-    background-color: white;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 24px;
-    padding-right: 40px;
-    border-radius: 10px;
+	flex: 1;
+	background-color: white;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 24px;
+	padding-right: 40px;
+	border-radius: 10px;
 }
 
 .form-group {
-    margin-bottom: 16px;
+	margin-bottom: 16px;
 }
 
 .title, h3 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #2d3748;
-    text-align: center;
-    margin-bottom: 16px;
+	font-size: 24px;
+	font-weight: 600;
+	color: #2d3748;
+	text-align: center;
+	margin-bottom: 16px;
 }
 
 .input-field {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    outline: none;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	outline: none;
 }
 
 .input-field:focus {
-    border-color: #0ea5e9;
+	border-color: #0ea5e9;
 }
+
 .checkbox-container {
-    display: flex;
-    align-items: center;
-    
+	display: flex;
+	align-items: center;
 }
 
 .checkbox-container input {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    
+	width: 16px;
+	height: 16px;
+	margin-right: 8px;
 }
+
 .checkbox-container label {
-    margin-top: 8px;
-    margin-left: 10px;
+	margin-top: 8px;
+	margin-left: 10px;
 }
 
 .checkbox-container a {
-    color: #0284c7;
-    text-decoration: none;
-    
+	color: #0284c7;
+	text-decoration: none;
 }
 
 .checkbox-container a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
+
 .button {
-    width: 100%;
-    background-color: #0284c7;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    margin-top: 16px;
+	width: 100%;
+	background-color: #0284c7;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 6px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
+	margin-top: 16px;
 }
 
 .button:hover {
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /**/
-
 .header-main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
 }
 
 .header-main h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
 }
 
 .profile-link {
-    display: flex;
-    align-items: center;
-    color: #007bff;
-    text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: #007bff;
+	text-decoration: none;
 }
 
 .profile-link:hover {
-    color: #0056b3;
+	color: #0056b3;
 }
 
 .profile-link svg {
-    margin-right: 4px;
+	margin-right: 4px;
 }
 
 .header-title {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 24px;
 }
+
 .header h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
+	font-size: 20px;
+	font-weight: bold;
+	color: #333;
 }
 
 .search-container {
-    width: 100%;
-    max-width: 250px;
+	width: 100%;
+	max-width: 250px;
 }
 
 .search-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.2s;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	outline: none;
+	transition: border-color 0.2s;
 }
 
 .search-input:focus {
-    border-color: #007bff;
+	border-color: #007bff;
 }
 
 h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 16px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 16px;
 }
 
 .patients-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .patient-card {
-    background-color: white;
-    padding: 16px;
-    border-left: 4px solid #007bff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	background-color: white;
+	padding: 16px;
+	border-left: 4px solid #007bff;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .patient-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .patient-id {
-    font-weight: 600;
-    color: #555;
+	font-weight: 600;
+	color: #555;
 }
 
 .patient-name {
-    font-size: 18px;
-    font-weight: bold;
-    color: #222;
+	font-size: 18px;
+	font-weight: bold;
+	color: #222;
 }
 
 .patient-details {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
+	margin-top: 10px;
+	font-size: 14px;
+	color: #666;
 }
 
 .button-container {
-    margin-top: 24px;
-    text-align: center;
+	margin-top: 24px;
+	text-align: center;
 }
 
 .add-patient-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #007bff;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s ease;
 }
 
 .add-patient-button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 .add-patient-button svg {
-    margin-right: 8px;
+	margin-right: 8px;
 }
 
-
-
 /**/
-
-
-
 .back-link {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
+	color: #007bff;
+	text-decoration: none;
+	font-size: 16px;
 }
 
 .back-link:hover {
-    color: #0056b3;
+	color: #0056b3;
 }
 
 /* Карточка профиля */
 .profile-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 24px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 24px;
 }
 
 /* Размещение профиля */
 .profile-layout {
-    display: flex;
-    gap: 24px;
+	display: flex;
+	gap: 24px;
 }
 
 /* Аватар */
 .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #cce5ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #007bff;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #cce5ff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: #007bff;
 }
 
 /* Информация */
 .profile-info h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 12px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 12px;
 }
 
 /* Сетка информации */
 .info-grid {
-    display: flex;
-    gap: 20px;
+	display: flex;
+	gap: 20px;
 }
 
 .info-row {
-    margin-bottom: 8px;
+	margin-bottom: 8px;
 }
 
 .info-label {
-    font-weight: bold;
-    color: #555;
+	font-weight: bold;
+	color: #555;
 }
 
 .info-value {
-    color: #333;
+	color: #333;
 }
 
 /* Кнопки */
 .button-group {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
 }
 
 .cancel-button, .edit-button {
-    font-size: 16px;
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+	font-size: 16px;
+	padding: 10px 16px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
 }
 
 .cancel-button {
-    background-color: white;
-    border: 1px solid #ccc;
-    color: #333;
+	background-color: white;
+	border: 1px solid #ccc;
+	color: #333;
 }
 
 .cancel-button:hover {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .edit-button {
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
+	background-color: #007bff;
+	color: white;
+	text-decoration: none;
+	display: inline-block;
 }
 
 .edit-button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 /*profile-update*/
-
-
-
 .back-link {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: 500;
+	color: #3b82f6;
+	text-decoration: none;
+	font-weight: 500;
 }
 
 .back-link:hover {
-    color: #2563eb;
-    text-decoration: underline;
+	color: #2563eb;
+	text-decoration: underline;
 }
 
 /* Карточка профиля */
 .profile-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    padding: 30px;
-    margin-bottom: 20px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+	padding: 30px;
+	margin-bottom: 20px;
 }
 
 .profile-card h2 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 25px;
+	font-size: 20px;
+	font-weight: 600;
+	color: #2d3748;
+	margin-bottom: 25px;
 }
 
 /* Форма */
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 30px;
 }
 
-@media (min-width: 768px) {
-    .form-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+@media ( min-width : 768px) {
+	.form-grid {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 .form-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .form-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #64748b;
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+	color: #64748b;
 }
 
 .form-input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	font-size: 14px;
+	transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-input:focus {
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
-    outline: none;
+	border-color: #60a5fa;
+	box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
+	outline: none;
 }
 
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 15px;
 }
 
-@media (min-width: 480px) {
-    .form-row {
-        grid-template-columns: 1fr 1fr;
-    }
+@media ( min-width : 480px) {
+	.form-row {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 /* Секция с паролем */
 .password-section {
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #e2e8f0;
+	margin-top: 30px;
+	padding-top: 30px;
+	border-top: 1px solid #e2e8f0;
 }
 
 .password-section h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #2d3748;
+	margin-bottom: 20px;
 }
 
 /* Кнопки */
 .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-top: 30px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 15px;
+	margin-top: 30px;
 }
 
 .cancel-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: white;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    color: #374151;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: white;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	color: #374151;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.2s;
 }
 
 .cancel-button:hover {
-    background-color: #f3f4f6;
+	background-color: #f3f4f6;
 }
 
 .submit-button {
-    padding: 10px 20px;
-    background-color: #3b82f6;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
+	padding: 10px 20px;
+	background-color: #3b82f6;
+	border: none;
+	border-radius: 6px;
+	color: white;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s;
 }
 
 .submit-button:hover {
-    background-color: #2563eb;
+	background-color: #2563eb;
+}
+
+/*add-mother*/
+
+/* Общие стили формы */
+.card {
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 24px;
+	margin-bottom: 20px;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+@media ( min-width : 768px) {
+	.form-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.form-group {
+	margin-bottom: 16px;
+}
+
+.form-label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+	color: #555;
+}
+
+.form-input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+.checkbox-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.checkbox-group label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.cancel-button {
+	padding: 10px 20px;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	color: #333;
+	text-decoration: none;
+}
+
+.submit-button {
+	padding: 10px 20px;
+	background: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.submit-button:hover {
+	background: #45a049;
 }

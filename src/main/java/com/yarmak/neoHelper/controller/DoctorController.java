@@ -28,102 +28,96 @@ import lombok.RequiredArgsConstructor;
 public class DoctorController {
 
 	private final MotherService motherService;
-	private final SpecializationService specializationService; 
-	private final DoctorService doctorService; 
+	private final SpecializationService specializationService;
+	private final DoctorService doctorService;
 	private final CustomPasswordEncoder passwordEncoder;
-	
-	
-	 @GetMapping("/profile")
-	    public String showDoctorProfile(HttpSession session, Model model) {
-	        Doctor doctor = (Doctor) session.getAttribute("currentDoctor");
-	        
-	        if (doctor == null) {
-	            return "redirect:/login";
-	        }
 
-	        model.addAttribute("sessionDoctor", doctor);
-	        model.addAttribute("doctor", doctor); 
-	        
-	        return "profile";
-	    }
-	 
-	 @GetMapping("/back")
-	 public String backToMainPage(Model model,
-		        RedirectAttributes redirectAttributes) {
-		 List<Mother> mothers = motherService.getAllMothers();
-	     redirectAttributes.addFlashAttribute("patients", mothers);
-		 return "main";
-	 }
-	 
-	 @GetMapping("/edit")
-	 public String goToEditProfile(HttpSession session,Model model,
-		        RedirectAttributes redirectAttributes) {
-		 Doctor doctor = (Doctor) session.getAttribute("currentDoctor");
-	        
-	        if (doctor == null) {
-	            return "redirect:/login";
-	        }
+	@GetMapping("/profile")
+	public String showDoctorProfile(HttpSession session, Model model) {
+		Doctor doctor = (Doctor) session.getAttribute("currentDoctor");
 
-	        model.addAttribute("sessionDoctor", doctor);
-	        model.addAttribute("doctor", doctor); 
-	        
-	        List<Specialization>  list = specializationService.getAllSpecializations();	     
-		     model.addAttribute("specializations", list);
-		 return "editProfile";
-	 }
-	 
-	 @PostMapping("/update")
-	 public String updateProfile(Model model, @ModelAttribute("doctor") Doctor updatedDoctor,
-	                              @RequestParam(required = false) String currentPassword,
-	                              @RequestParam(required = false) String newPassword,
-	                              HttpSession session,
-	                              RedirectAttributes redirectAttributes) {
+		if (doctor == null) {
+			return "redirect:/login";
+		}
 
-	        try {
-	            Doctor currentDoctor = (Doctor) session.getAttribute("currentDoctor");
-	            if (currentDoctor == null) {
-	                return "login";
-	            }
+		model.addAttribute("sessionDoctor", doctor);
+		model.addAttribute("doctor", doctor);
 
-	            updatedDoctor.setDoctorId(currentDoctor.getDoctorId());
+		return "profile";
+	}
 
-	            if (currentPassword != null && !currentPassword.isEmpty() && 
-	                newPassword != null && !newPassword.isEmpty()) {
-	                
-	                if (!passwordEncoder.matches(currentPassword, currentDoctor.getPassword())) {
-	                    redirectAttributes.addFlashAttribute("error", "Текущий пароль неверен");
-	                    return "redirect:/doctor/profile/edit";
-	                }
-	                
-	                updatedDoctor.setPassword(passwordEncoder.encode(newPassword));
-	            } else {
-	                updatedDoctor.setPassword(currentDoctor.getPassword());
-	            }
+	@GetMapping("/back")
+	public String backToMainPage(Model model, RedirectAttributes redirectAttributes) {
+		List<Mother> mothers = motherService.getAllMothers();
+		model.addAttribute("patients", mothers);
+		return "main";
+	}
 
-	            if (updatedDoctor.getSpecialization() != null && 
-	                updatedDoctor.getSpecialization().getId() != 0) {
-	                Specialization spec = specializationService.findById(updatedDoctor.getSpecialization().getId())
-	                        .orElseThrow(() -> new RuntimeException("Specialization not found"));
-	                updatedDoctor.setSpecialization(spec);
-	            } else {
-	                updatedDoctor.setSpecialization(currentDoctor.getSpecialization());
-	            }
+	@GetMapping("/edit")
+	public String goToEditProfile(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+		Doctor doctor = (Doctor) session.getAttribute("currentDoctor");
 
-	            Doctor savedDoctor = doctorService.update(updatedDoctor);
-	            
-	            session.setAttribute("currentDoctor", savedDoctor);
-	            
-	            redirectAttributes.addFlashAttribute("success", "Профиль успешно обновлен");
-	            
-	            model.addAttribute("sessionDoctor", updatedDoctor);
-		        model.addAttribute("doctor", updatedDoctor); 
-		        
-	            return "profile";
-	            
-	        } catch (Exception e) {
-	            redirectAttributes.addFlashAttribute("error", "Ошибка при обновлении профиля: " + e.getMessage());
-	            return "editProfile";
-	        }
-	 }
-	 
+		if (doctor == null) {
+			return "redirect:/login";
+		}
+
+		model.addAttribute("sessionDoctor", doctor);
+		model.addAttribute("doctor", doctor);
+
+		List<Specialization> list = specializationService.getAllSpecializations();
+		model.addAttribute("specializations", list);
+		return "editProfile";
+	}
+
+	@PostMapping("/update")
+	public String updateProfile(Model model, @ModelAttribute("doctor") Doctor updatedDoctor,
+			@RequestParam(required = false) String currentPassword, @RequestParam(required = false) String newPassword,
+			HttpSession session, RedirectAttributes redirectAttributes) {
+
+		try {
+			Doctor currentDoctor = (Doctor) session.getAttribute("currentDoctor");
+			if (currentDoctor == null) {
+				return "login";
+			}
+
+			updatedDoctor.setDoctorId(currentDoctor.getDoctorId());
+
+			if (currentPassword != null && !currentPassword.isEmpty() && newPassword != null
+					&& !newPassword.isEmpty()) {
+
+				if (!passwordEncoder.matches(currentPassword, currentDoctor.getPassword())) {
+					redirectAttributes.addFlashAttribute("error", "Текущий пароль неверен");
+					return "redirect:/doctor/profile/edit";
+				}
+
+				updatedDoctor.setPassword(passwordEncoder.encode(newPassword));
+			} else {
+				updatedDoctor.setPassword(currentDoctor.getPassword());
+			}
+
+			if (updatedDoctor.getSpecialization() != null && updatedDoctor.getSpecialization().getId() != 0) {
+				Specialization spec = specializationService.findById(updatedDoctor.getSpecialization().getId())
+						.orElseThrow(() -> new RuntimeException("Specialization not found"));
+				updatedDoctor.setSpecialization(spec);
+			} else {
+				updatedDoctor.setSpecialization(currentDoctor.getSpecialization());
+			}
+
+			Doctor savedDoctor = doctorService.update(updatedDoctor);
+
+			session.setAttribute("currentDoctor", savedDoctor);
+
+			redirectAttributes.addFlashAttribute("success", "Профиль успешно обновлен");
+
+			model.addAttribute("sessionDoctor", updatedDoctor);
+			model.addAttribute("doctor", updatedDoctor);
+
+			return "profile";
+
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("error", "Ошибка при обновлении профиля: " + e.getMessage());
+			return "editProfile";
+		}
+	}
+
 }

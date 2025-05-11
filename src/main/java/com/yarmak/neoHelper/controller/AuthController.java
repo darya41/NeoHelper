@@ -59,8 +59,9 @@ public class AuthController {
 	        session.setAttribute("currentDoctor", doctor);
 	        
 	        List<Mother> mothers = motherService.getAllMothers();
-	        redirectAttributes.addFlashAttribute("patients", mothers);
+	        model.addAttribute("patients", mothers);
 	        return "main";
+
 	        
 	    } catch (Exception e) {
 	        log.error("Unexpected error during login for user {}: {}", login, e.getMessage(), e);

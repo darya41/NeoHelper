@@ -7,19 +7,21 @@ import org.springframework.stereotype.Service;
 import com.yarmak.neoHelper.dao.DoctorRepository;
 import com.yarmak.neoHelper.model.Doctor;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class DoctorService {
-	
+
 	private final DoctorRepository doctorRepository;
 
-    public DoctorService(DoctorRepository doctorRepository) {
-        this.doctorRepository = doctorRepository;
-    }
-    
+	@Transactional
 	public Optional<Doctor> findDoctorById(int doctorId) {
-        return doctorRepository.findById(doctorId);
-    }
+		return doctorRepository.findById(doctorId);
+	}
 
+	@Transactional
 	public Doctor update(Doctor updatedDoctor) {
 		return doctorRepository.save(updatedDoctor);
 	}

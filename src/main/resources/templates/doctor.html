@@ -1,89 +1,92 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoHelper - Профиль врача</title>
-    <link rel="stylesheet" th:href="@{/styles.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoHelper - Профиль врача</title>
+<link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-    <div class="container">
-        <!-- Шапка -->
-        <div class="header">
-            <h1>NeoHelper</h1>
-            <a th:href="@{/main}" class="back-link">← Назад к списку пациентов</a>
-        </div>
+	<div class="container">
+		<!-- Шапка -->
+		<div class="header">
+			<h1>NeoHelper</h1>
+			<a th:href="@{/main}" class="back-link">← Назад к списку
+				пациентов</a>
+		</div>
 
-        <!-- Основной контент -->
-        <div class="profile-card">
-            <div class="profile-layout">
-                <!-- Аватар -->
-                <div class="avatar">
-                    <span th:text="${#strings.abbreviate(doctor.lastName + ' ' + doctor.firstName, 2)}">ИП</span>
-                </div>
+		<!-- Основной контент -->
+		<div class="profile-card">
+			<div class="profile-layout">
+				<!-- Аватар -->
+				<div class="avatar">
+					<span
+						th:text="${#strings.abbreviate(doctor.lastName + ' ' + doctor.firstName, 2)}">ИП</span>
+				</div>
 
-                <!-- Информация о враче -->
-                <div class="profile-info">
-                    <h2>Профиль врача</h2>
-                    
-                    <div class="info-grid">
-                        <!-- Левая колонка -->
-                        <div>
-                            <div class="info-row">
-                                <span class="info-label">Фамилия:</span>
-                                <span class="info-value" th:text="${doctor.lastName} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Имя:</span>
-                                <span class="info-value" th:text="${doctor.firstName} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Отчество:</span>
-                                <span class="info-value" th:text="${doctor.patronymic} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Логин:</span>
-                                <span class="info-value" th:text="${doctor.login} ?: '—'">—</span>
-                            </div>
-                        </div>
+				<!-- Информация о враче -->
+				<div class="profile-info">
+					<h2>Профиль врача</h2>
 
-                        <!-- Правая колонка -->
-                        <div>
-                            <div class="info-row">
-                                <span class="info-label">Специализация:</span>
-                                <span class="info-value" th:text="${doctor.specialization.name} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Рабочий телефон:</span>
-                                <span class="info-value" th:text="${doctor.workPhone} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Личный телефон:</span>
-                                <span class="info-value" th:text="${doctor.personalPhone} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Рабочая почта:</span>
-                                <span class="info-value" th:text="${doctor.workEmail} ?: '—'">—</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Кабинет:</span>
-                                <span class="info-value" 
-                                      th:text="'Этаж ' + (doctor.departmentFloor != null ? doctor.departmentFloor : '—') + 
+					<div class="info-grid">
+						<!-- Левая колонка -->
+						<div>
+							<div class="info-row">
+								<span class="info-label">Фамилия:</span> <span
+									class="info-value" th:text="${doctor.lastName} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Имя:</span> <span class="info-value"
+									th:text="${doctor.firstName} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Отчество:</span> <span
+									class="info-value" th:text="${doctor.patronymic} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Логин:</span> <span class="info-value"
+									th:text="${doctor.login} ?: '—'">—</span>
+							</div>
+						</div>
+
+						<!-- Правая колонка -->
+						<div>
+							<div class="info-row">
+								<span class="info-label">Специализация:</span> <span
+									class="info-value"
+									th:text="${doctor.specialization.name} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Рабочий телефон:</span> <span
+									class="info-value" th:text="${doctor.workPhone} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Личный телефон:</span> <span
+									class="info-value" th:text="${doctor.personalPhone} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Рабочая почта:</span> <span
+									class="info-value" th:text="${doctor.workEmail} ?: '—'">—</span>
+							</div>
+							<div class="info-row">
+								<span class="info-label">Кабинет:</span> <span
+									class="info-value"
+									th:text="'Этаж ' + (doctor.departmentFloor != null ? doctor.departmentFloor : '—') + 
                                                ', комната ' + (doctor.departmentRoom ?: '—')">
-                                    Этаж —, комната —
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+									Этаж —, комната — </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Кнопки действий -->
-        <div class="button-group">
-            <button class="cancel-button" onclick="window.history.back()">Отмена</button>
-            <a th:href="@{/doctors/{id}/edit(id=${doctor.doctorId})}" class="edit-button">Редактировать профиль</a>
-        </div>
-    </div>
+		<!-- Кнопки действий -->
+		<div class="button-group">
+			<button class="cancel-button" onclick="window.history.back()">Отмена</button>
+			<a th:href="@{/doctors/{id}/edit(id=${doctor.doctorId})}"
+				class="edit-button">Редактировать профиль</a>
+		</div>
+	</div>
 </body>
 </html>

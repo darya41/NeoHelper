@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Data
@@ -21,45 +22,45 @@ import lombok.NoArgsConstructor;
 @Table(name = "mothers")
 public class Mother {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "mother_id")
+	private int id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mother_id")
-    private Long id;
+	@ManyToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Address address;
+	@NonNull
+	@Column(name = "first_name", nullable = false)
+	private String firstName;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+	@NonNull
+	@Column(name = "last_name", nullable = false)
+	private String lastName;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+	@Column(name = "patronymic")
+	private String patronymic;
 
-    @Column(name = "patronymic")
-    private String patronymic;
+	@Column(name = "date_of_birth", nullable = false)
+	private LocalDate dateOfBirth;
 
-    @Column(name = "date_of_birth", nullable = false)
-    private LocalDate dateOfBirth;
+	@Column(name = "number_of_deliveries")
+	private Integer numberOfDeliveries;
 
-    @Column(name = "number_of_deliveries")
-    private Integer numberOfDeliveries;
+	@Column(name = "number_of_pregnancies")
+	private Integer numberOfPregnancies;
 
-    @Column(name = "number_of_pregnancies")
-    private Integer numberOfPregnancies;
+	@Column(name = "medications_during_pregnancy", length = 1000)
+	private String medicationsDuringPregnancy;
 
-    @Column(name = "medications_during_pregnancy", length = 1000)
-    private String medicationsDuringPregnancy;
+	@Column(name = "gestational_diabetes")
+	private Boolean gestationalDiabetes;
 
-    @Column(name = "gestational_diabetes")
-    private Boolean gestationalDiabetes;
+	@Column(name = "preeclampsia")
+	private Boolean preeclampsia;
 
-    @Column(name = "preeclampsia")
-    private Boolean preeclampsia;
+	@Column(name = "groupB_streptococcus_status")
+	private String groupBStreptococcusStatus;
 
-    @Column(name = "groupB_streptococcus_status")
-    private String groupBStreptococcusStatus;
-	
-	
 }
