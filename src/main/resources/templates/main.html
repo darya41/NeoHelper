@@ -30,29 +30,30 @@
 			</div>
 		</div>
 
-		
-			<div th:if="${patients != null}">
-				<div class="patients-list">
-					<div class="patient-card" th:each="patient : ${patients}">
-						<div class="patient-info">
-							<div class="patient-name" th:text="${patient.firstName + ' ' + (patient.patronymic != null ? patient.patronymic : '') + ' ' + patient.lastName}">
-							...</div>
 
+		<div th:if="${patients != null}">
+			<div class="patients-list">
+				<div class="patient-card" th:each="patient : ${patients}"
+					th:onclick="'window.location.href=\'/mother/details/' + ${patient.id} + '\''">
+					<div class="patient-info">
+						<div class="patient-name"
+							th:text="${patient.firstName + ' ' + (patient.patronymic != null ? patient.patronymic : '') + ' ' + patient.lastName}">
 						</div>
-						<div class="patient-details">
-							<div>
-								Количество родов: <span th:text="${patient.numberOfDeliveries}"></span>
-							</div>
+					</div>
+					<div class="patient-details">
+						<div>
+							Количество родов: <span th:text="${patient.numberOfDeliveries}"></span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div th:if="${patients == null}"
-				class="no-patients-message">
-				<p>Нет доступных пациентов. Нажмите "Добавить роженицу", чтобы
-					создать новую запись.</p>
-			</div>
-		
+
+		</div>
+		<div th:if="${patients == null}" class="no-patients-message">
+			<p>Нет доступных пациентов. Нажмите "Добавить роженицу", чтобы
+				создать новую запись.</p>
+		</div>
+
 
 		<div class="button-container">
 			<a th:href="@{/mother/addPage}" class="add-patient-button"> <svg

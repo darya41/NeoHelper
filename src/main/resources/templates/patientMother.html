@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoHelper - Матери и новорожденные</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="header-main">
+			<h1>NeoHelper</h1>
+			<a th:href="@{/doctor/profile}" class="profile-link">Личный
+				кабинет</a>
+		</div>
+
+		<h2>Матери и новорожденные</h2>
+
+		
+		<div th:if="${mother != null}">
+			<div class="mother-card">
+				<div class="mother-info">
+					<h3
+						th:text="${mother.lastName + ' ' + mother.firstName + ' ' + (mother.patronymic != null ? mother.patronymic : '')}"></h3>
+					<p>
+						Дата рождения: <span
+							th:text="${#temporals.format(mother.dateOfBirth, 'dd.MM.yyyy')}"></span>
+					</p>
+					<p>
+						Родов: <span th:text="${mother.numberOfDeliveries}"></span>
+					</p>
+				</div>
+				
+				<div class="newborns-list">
+					<h4>Дети:</h4>
+					<div
+						th:if="${patients != null and !patients.isEmpty()}">
+						<div th:each="newborn : ${patients}" class="newborn-card">
+							<p>
+								Пол: <span
+									th:text="${newborn.gender == 'MALE' ? 'Мужской' : 'Женский'}"></span>
+							</p>
+							<p>
+								Дата рождения: <span
+									th:text="${#temporals.format(newborn.dateOfBirth, 'dd.MM.yyyy HH:mm')}"></span>
+							</p>
+						</div>
+					</div>
+					<div
+						th:if="${patients == null or patients.isEmpty()}"
+						class="no-newborns-message">
+						<p>Нет данных о новорожденных</p>
+					</div>
+
+
+					<div class="button-container">
+						<a th:href="@{/newborn/addPage(motherId=${mother.id})}"
+							class="add-newborn-button">Добавить новорожденного</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="button-container">
+			<a th:href="@{/doctor/back}" class="add-patient-button">Назад</a>
+		</div>
+	</div>
+</body>
+</html>

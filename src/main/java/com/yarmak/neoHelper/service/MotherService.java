@@ -1,6 +1,8 @@
 package com.yarmak.neoHelper.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +37,10 @@ public class MotherService {
 	@Transactional
 	public Mother save(Mother mother) {
 		return motherRepository.save(mother);
+	}
+
+	public Optional<Mother> getById(int id) {
+		return motherRepository.findById(id);
 	}
 
 }

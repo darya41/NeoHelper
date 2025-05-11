@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.yarmak.neoHelper.model.Mother;
 
 @Repository
-public interface MotherRepository extends JpaRepository<Mother, Long> {
+public interface MotherRepository extends JpaRepository<Mother, Integer> {
 	@Query("SELECT m FROM Mother m LEFT JOIN FETCH m.address")
 	List<Mother> findAllWithAddress();
 
