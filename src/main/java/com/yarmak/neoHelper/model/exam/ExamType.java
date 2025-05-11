@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "examtypes")
+@Table(name = "examstypes")
 public class ExamType {
 
 	@Id

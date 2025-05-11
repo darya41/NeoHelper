@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Добавление новорожденного</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h2>Добавление новорожденного</h2>
+
+		<form action="/newborn/save" method="post">
+			<input type="hidden" name="motherId" th:value="${motherId}">
+
+			<div class="form-group">
+				<label for="dateOfBirth">Дата и время рождения:</label> <input
+					type="datetime-local" id="dateOfBirth" name="dateOfBirth" required>
+			</div>
+
+			<div class="form-group">
+				<label for="gender">Пол:</label> <select id="gender" name="gender">
+					<option value="MALE">Мужской</option>
+					<option value="FEMALE">Женский</option>
+				</select>
+			</div>
+
+			<h3>Медицинские параметры</h3>
+			<div th:each="medParam : ${params}" class="form-group">
+				<label th:text="${medParam.medicalParameter.name}"></label>
+
+				<div
+					th:if="${medParam.medicalParameter.parameterValues != null and !medParam.medicalParameter.parameterValues.isEmpty()}">
+					<select name="paramValue">
+						<option
+							th:each="value : ${medParam.medicalParameter.parameterValues}"
+							th:value="${value.id}" th:text="${value.paramValue}"></option>
+					</select>
+				</div>
+
+				<div
+					th:if="${medParam.medicalParameter.parameterValues == null or medParam.medicalParameter.parameterValues.isEmpty()}">
+					<input type="text" name="paramValue">
+				</div>
+
+			</div>
+
+			<button type="submit">Сохранить</button>
+		</form>
+	</div>
+</body>
+</html>
