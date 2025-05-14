@@ -1,7 +1,5 @@
 package com.yarmak.neoHelper.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,13 +10,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yarmak.neoHelper.model.doctor.Doctor;
 import com.yarmak.neoHelper.model.doctor.Specialization;
-import com.yarmak.neoHelper.model.patient.Mother;
 import com.yarmak.neoHelper.service.DoctorService;
 import com.yarmak.neoHelper.service.MotherService;
 import com.yarmak.neoHelper.service.SpecializationService;
 import com.yarmak.neoHelper.util.CustomPasswordEncoder;
 
 import org.springframework.ui.Model;
+
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
@@ -37,7 +35,7 @@ public class DoctorController {
 		Doctor doctor = (Doctor) session.getAttribute("currentDoctor");
 
 		if (doctor == null) {
-			return "redirect:/login";
+			return "login";
 		}
 
 		model.addAttribute("sessionDoctor", doctor);
@@ -48,8 +46,7 @@ public class DoctorController {
 
 	@GetMapping("/back")
 	public String backToMainPage(Model model, RedirectAttributes redirectAttributes) {
-		List<Mother> mothers = motherService.getAllMothers();
-		model.addAttribute("patients", mothers);
+		model.addAttribute("patients", motherService.getAllMothers());
 		return "main";
 	}
 
@@ -57,37 +54,45 @@ public class DoctorController {
 	public String goToEditProfile(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
 		Doctor doctor = (Doctor) session.getAttribute("currentDoctor");
 
-		if (doctor == null) {
-			return "redirect:/login";
-		}
+		if (doctor == null)
+			return "login";
 
 		model.addAttribute("sessionDoctor", doctor);
 		model.addAttribute("doctor", doctor);
-
-		List<Specialization> list = specializationService.getAllSpecializations();
-		model.addAttribute("specializations", list);
+		model.addAttribute("specializations", specializationService.getAllSpecializations());
 		return "editProfile";
 	}
 
 	@PostMapping("/update")
-	public String updateProfile(Model model, @ModelAttribute("doctor") Doctor updatedDoctor,
+	public String updateProfile(@ModelAttribute("doctor") Doctor updatedDoctor,
 			@RequestParam(required = false) String currentPassword, @RequestParam(required = false) String newPassword,
-			HttpSession session, RedirectAttributes redirectAttributes) {
+			HttpSession session, RedirectAttributes redirectAttributes, Model model) {
 
 		try {
 			Doctor currentDoctor = (Doctor) session.getAttribute("currentDoctor");
 			if (currentDoctor == null) {
-				return "login";
+				return "redirect:/login";
 			}
 
 			updatedDoctor.setDoctorId(currentDoctor.getDoctorId());
 
-			if (currentPassword != null && !currentPassword.isEmpty() && newPassword != null
-					&& !newPassword.isEmpty()) {
+			if ((currentPassword != null && !currentPassword.isEmpty())
+					|| (newPassword != null && !newPassword.isEmpty())) {
 
-				if (!passwordEncoder.matches(currentPassword, currentDoctor.getPassword())) {
-					redirectAttributes.addFlashAttribute("error", "Текущий пароль неверен");
-					return "redirect:/doctor/profile/edit";
+				if (currentPassword == null || currentPassword.isEmpty()) {
+					redirectAttributes.addFlashAttribute("currentPasswordError", "Введите текущий пароль");
+				} else if (!passwordEncoder.matches(currentPassword, currentDoctor.getPassword())) {
+					redirectAttributes.addFlashAttribute("currentPasswordError", "Текущий пароль неверен");
+				}
+
+				if (newPassword == null || newPassword.isEmpty()) {
+					redirectAttributes.addFlashAttribute("newPasswordError", "Введите новый пароль");
+				}
+
+				if (redirectAttributes.getFlashAttributes().containsKey("currentPasswordError")
+						|| redirectAttributes.getFlashAttributes().containsKey("newPasswordError")) {
+					redirectAttributes.addFlashAttribute("doctor", updatedDoctor);
+					return "redirect:/doctor/edit";
 				}
 
 				updatedDoctor.setPassword(passwordEncoder.encode(newPassword));
@@ -104,19 +109,14 @@ public class DoctorController {
 			}
 
 			Doctor savedDoctor = doctorService.update(updatedDoctor);
-
 			session.setAttribute("currentDoctor", savedDoctor);
 
 			redirectAttributes.addFlashAttribute("success", "Профиль успешно обновлен");
-
-			model.addAttribute("sessionDoctor", updatedDoctor);
-			model.addAttribute("doctor", updatedDoctor);
-
-			return "profile";
+			return "redirect:/doctor/profile";
 
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("error", "Ошибка при обновлении профиля: " + e.getMessage());
-			return "editProfile";
+			return "redirect:/doctor/edit";
 		}
 	}
 

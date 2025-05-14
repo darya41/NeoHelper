@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yarmak.neoHelper.dao.MotherRepository;
 import com.yarmak.neoHelper.model.patient.Mother;
+import com.yarmak.neoHelper.repository.MotherRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -39,8 +39,17 @@ public class MotherService {
 		return motherRepository.save(mother);
 	}
 
+	@Transactional
 	public Optional<Mother> getById(int id) {
 		return motherRepository.findById(id);
+	}
+
+	public void editWithNewBaby(Optional<Mother> motherOptional) {
+		Mother mother = motherOptional.get();
+		mother.setNumberOfDeliveries(mother.getNumberOfDeliveries()+1);
+		mother.setNumberOfPregnancies(mother.getNumberOfPregnancies()+1);
+		
+		save(mother);		
 	}
 
 }

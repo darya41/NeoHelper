@@ -2,8 +2,8 @@ package com.yarmak.neoHelper.service;
 
 import org.springframework.stereotype.Service;
 
-import com.yarmak.neoHelper.dao.AddressRepository;
 import com.yarmak.neoHelper.model.patient.Address;
+import com.yarmak.neoHelper.repository.AddressRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -20,3 +20,5 @@ public class AddressService {
 	}
 
 }
+
+

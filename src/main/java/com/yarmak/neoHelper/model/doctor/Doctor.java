@@ -18,6 +18,7 @@ public class Doctor {
 	private int doctorId;
 
 	@NonNull
+	
 	@Column(name = "first_name", nullable = false, length = 45)
 	private String firstName;
 

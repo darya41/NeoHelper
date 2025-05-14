@@ -5,15 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeoHelper - Добавление роженицы</title>
 <link th:href="@{/css/style.css}" rel="stylesheet">
+<style>
+    .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+    .error-border {
+        border-color: #dc3545 !important;
+    }
+</style>
 </head>
 <body>
 	<div class="container">
 		<!-- Шапка -->
 		<div class="header">
 			<h1>NeoHelper</h1>
-			<a th:href="@{/mothers}" class="back-link">← Назад к списку
-				рожениц</a>
+			<a th:href="@{/doctor/back}" class="back-link">← Назад к списку рожениц</a>
 		</div>
+
+		
 
 		<div class="card">
 			<h2>Добавление новой роженицы</h2>
@@ -22,67 +33,66 @@
 				<div class="form-grid">
 					<div class="form-column">
 						<div class="form-group">
-							<label for="last_name" class="form-label">Фамилия</label> <input
-								type="text" id="last_name" class="form-input"
-								th:field="*{lastName}" required>
+							<label for="last_name" class="form-label">Фамилия</label> 
+							<input type="text" id="last_name" class="form-input"
+								th:field="*{lastName}" th:classappend="${#fields.hasErrors('lastName')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('lastName')}" class="error-message" th:errors="*{lastName}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="first_name" class="form-label">Имя</label> <input
-								type="text" id="first_name" class="form-input"
-								th:field="*{firstName}" required>
+							<label for="first_name" class="form-label">Имя</label> 
+							<input type="text" id="first_name" class="form-input"
+								th:field="*{firstName}" th:classappend="${#fields.hasErrors('firstName')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('firstName')}" class="error-message" th:errors="*{firstName}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="patronymic" class="form-label">Отчество</label> <input
-								type="text" id="patronymic" class="form-input"
-								th:field="*{patronymic}">
+							<label for="patronymic" class="form-label">Отчество</label> 
+							<input type="text" id="patronymic" class="form-input"
+								th:field="*{patronymic}" th:classappend="${#fields.hasErrors('patronymic')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('patronymic')}" class="error-message" th:errors="*{patronymic}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="date_of_birth" class="form-label">Дата
-								рождения</label> <input type="date" id="date_of_birth"
-								class="form-input" th:field="*{dateOfBirth}" required>
+							<label for="date_of_birth" class="form-label">Дата рождения</label> 
+							<input type="date" id="date_of_birth" class="form-input"
+								th:field="*{dateOfBirth}" th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('dateOfBirth')}" class="error-message" th:errors="*{dateOfBirth}"></span>
 						</div>
 					</div>
 					<div class="form-column">
 						<div class="form-group">
-							<label for="number_of_pregnancies" class="form-label">Количество
-								беременностей</label> <input type="number" id="number_of_pregnancies"
-								class="form-input" th:field="*{numberOfPregnancies}" min="0"
-								required>
+							<label for="number_of_pregnancies" class="form-label">Количество беременностей</label> 
+							<input type="number" id="number_of_pregnancies" class="form-input"
+								th:field="*{numberOfPregnancies}" min="0" th:classappend="${#fields.hasErrors('numberOfPregnancies')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('numberOfPregnancies')}" class="error-message" th:errors="*{numberOfPregnancies}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="number_of_deliveries" class="form-label">Количество
-								родов</label> <input type="number" id="number_of_deliveries"
-								class="form-input" th:field="*{numberOfDeliveries}" min="0"
-								required>
+							<label for="number_of_deliveries" class="form-label">Количество родов</label> 
+							<input type="number" id="number_of_deliveries" class="form-input"
+								th:field="*{numberOfDeliveries}" min="0" th:classappend="${#fields.hasErrors('numberOfDeliveries')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('numberOfDeliveries')}" class="error-message" th:errors="*{numberOfDeliveries}"></span>
 						</div>
 
 						<div class="form-group">
 							<label class="form-label">Медицинские показатели:</label>
 							<div class="checkbox-group">
-								<label> <input type="checkbox"
-									th:field="*{gestationalDiabetes}"> Гестационный диабет
-								</label> <label> <input type="checkbox"
-									th:field="*{preeclampsia}"> Преэклампсия
-								</label>
+								<label> <input type="checkbox" th:field="*{gestationalDiabetes}"> Гестационный диабет </label> 
+								<label> <input type="checkbox" th:field="*{preeclampsia}"> Преэклампсия </label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="groupB_streptococcus_status" class="form-label">Стрептококк
-								группы B</label> <input type="text" id="groupB_streptococcus_status"
-								class="form-input" th:field="*{groupBStreptococcusStatus}"
-								placeholder="Введите статус">
+							<label for="groupB_streptococcus_status" class="form-label">Стрептококк группы B</label> 
+							<input type="text" id="groupB_streptococcus_status" class="form-input"
+								th:field="*{groupBStreptococcusStatus}" placeholder="Введите статус">
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="medications_during_pregnancy" class="form-label">Лекарства
-						во время беременности</label>
+					<label for="medications_during_pregnancy" class="form-label">Лекарства во время беременности</label>
 					<textarea id="medications_during_pregnancy" class="form-input"
 						th:field="*{medicationsDuringPregnancy}" rows="3"></textarea>
 				</div>
@@ -91,27 +101,30 @@
 					<h3>Адресные данные</h3>
 					<div class="form-grid">
 						<div class="form-group">
-							<label for="address_type" class="form-label">Тип адреса</label> <input
-								type="text" id="address_type" class="form-input"
-								th:field="*{address.addressType}" required>
+							<label for="address_type" class="form-label">Тип адреса</label> 
+							<input type="text" id="address_type" class="form-input"
+								th:field="*{address.addressType}" th:classappend="${#fields.hasErrors('address.addressType')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('address.addressType')}" class="error-message" th:errors="*{address.addressType}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="name_address_type" class="form-label">Название
-								типа адреса</label> <input type="text" id="name_address_type"
-								class="form-input" th:field="*{address.nameAddressType}">
+							<label for="name_address_type" class="form-label">Название типа адреса</label> 
+							<input type="text" id="name_address_type" class="form-input"
+								th:field="*{address.nameAddressType}">
 						</div>
 
 						<div class="form-group">
-							<label for="street" class="form-label">Улица</label> <input
-								type="text" id="street" class="form-input"
-								th:field="*{address.street}" required>
+							<label for="street" class="form-label">Улица</label> 
+							<input type="text" id="street" class="form-input"
+								th:field="*{address.street}" th:classappend="${#fields.hasErrors('address.street')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('address.street')}" class="error-message" th:errors="*{address.street}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="house_number" class="form-label">Дом</label> <input
-								type="text" id="house_number" class="form-input"
-								th:field="*{address.houseNumber}" required>
+							<label for="house_number" class="form-label">Дом</label> 
+							<input type="text" id="house_number" class="form-input"
+								th:field="*{address.houseNumber}" th:classappend="${#fields.hasErrors('address.houseNumber')} ? 'error-border'">
+							<span th:if="${#fields.hasErrors('address.houseNumber')}" class="error-message" th:errors="*{address.houseNumber}"></span>
 						</div>
 
 						<div class="form-group">
@@ -121,17 +134,16 @@
 						</div>
 
 						<div class="form-group">
-							<label for="apartment" class="form-label">Квартира</label> <input
-								type="text" id="apartment" class="form-input"
+							<label for="apartment" class="form-label">Квартира</label> 
+							<input type="text" id="apartment" class="form-input"
 								th:field="*{address.apartment}">
 						</div>
 					</div>
 				</div>
 
 				<div class="form-actions">
-					<a th:href="@{/mothers}" class="cancel-button">Отмена</a>
-					<button type="submit" class="submit-button">Добавить
-						роженицу</button>
+					<a th:href="@{/doctor/back}" class="cancel-button">Отмена</a>
+					<button type="submit" class="submit-button">Добавить роженицу</button>
 				</div>
 			</form>
 		</div>

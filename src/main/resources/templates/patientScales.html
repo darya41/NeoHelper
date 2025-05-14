@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты шкал пациента</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .patient-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .no-results {
+            color: #666;
+            font-style: italic;
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="patient-info">
+        <h2>Информация о пациенте</h2>
+       
+        <p><strong>Пол:</strong> <span th:text="${patient.gender}"></span></p>
+        <p><strong>Дата рождения:</strong> 
+            <span th:text="${#temporals.format(patient.dateOfBirth, 'dd.MM.yyyy')}"></span>
+        </p>
+    </div>
+    
+    <h2>Результаты шкал</h2>
+    
+    <div th:if="${hasResults}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Название шкалы</th>
+                    <th>Дата заполнения</th>
+                    <th>Общий балл</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result : ${results}">
+                    <td th:text="${result.score.name}">Название</td>
+                    <td th:text="${#temporals.format(result.date, 'dd.MM.yyyy')}">Дата</td>
+                    <td th:text="${result.totalScore}">Балл</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div th:unless="${hasResults}" class="no-results">
+        У данного пациента нет сохраненных результатов шкал.
+    </div>
+    <br>
+    <br>
+        <div class="add-button-container">
+            <a th:href="@{/scale/add/{patientId}(patientId=${patient.id})}" class="btn btn-primary">
+                Добавить шкалу
+            </a>
+        </div>
+         <div class="add-button-container">
+            <a th:href="@{/doctor/back}" class="btn btn-primary">
+                Вернуться назад
+            </a>
+        </div>
+</body>
+</html>

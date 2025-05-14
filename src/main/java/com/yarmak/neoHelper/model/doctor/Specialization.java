@@ -24,7 +24,7 @@ public class Specialization {
 	@Column(name = "name", nullable = false, length = 100)
 	private String name;
 
-	@Column(name = "description", columnDefinition = "TEXT")
+	@Column(name = "description")
 	private String description;
 
 	@NonNull
@@ -34,3 +34,5 @@ public class Specialization {
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
 }
+
+

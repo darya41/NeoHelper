@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление шкалы</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="scale-title" th:text="${score.name}">Название шкалы</h1>
+        
+        <div class="patient-info">
+            <h3>Информация о пациенте</h3>
+            <p><strong>Пол:</strong> <span th:text="${patient.gender}"></span></p>
+            <p><strong>Дата рождения:</strong> 
+                <span th:text="${#temporals.format(patient.dateOfBirth, 'dd.MM.yyyy')}"></span>
+            </p>
+        </div>
+        
+        <form th:action="@{/scale/save/{patientId}(patientId=${patient.id}, scoreId=${score.id})}" method="post">
+            <div th:each="parameter : ${T(com.yarmak.neoHelper.service.ScoreService).parseParameters(score.parameters)}" 
+                 class="parameter-group">
+                <div class="parameter-name" th:text="${parameter.key}">Название параметра</div>
+                
+                <div th:each="option : ${parameter.value}" class="option-item">
+                    <input type="radio" 
+                           th:id="${parameter.key + '_' + option.key}"
+                           th:name="${parameter.key}" 
+                           th:value="${option.value}"
+                           required>
+                    <label th:for="${parameter.key + '_' + option.key}" 
+                           th:text="${option.key + ' (' + option.value + ' балл' + (option.value != 1 ? 'а' : '') + ')'}">
+                        Вариант ответа
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Сохранить результаты</button>
+        </form>
+    </div>
+</body>
+</html>

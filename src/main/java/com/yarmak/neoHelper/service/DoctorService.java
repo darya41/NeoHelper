@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.yarmak.neoHelper.dao.DoctorRepository;
 import com.yarmak.neoHelper.model.doctor.Doctor;
+import com.yarmak.neoHelper.repository.DoctorRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

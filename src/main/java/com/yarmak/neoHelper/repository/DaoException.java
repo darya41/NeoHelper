@@ -1,4 +1,4 @@
-package com.yarmak.neoHelper.dao;
+package com.yarmak.neoHelper.repository;
 
 public class DaoException extends Exception {
 	/**

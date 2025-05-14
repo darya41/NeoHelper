@@ -1,4 +1,4 @@
-package com.yarmak.neoHelper.dao;
+package com.yarmak.neoHelper.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -16,7 +16,7 @@
 
 		<h2>Матери и новорожденные</h2>
 
-		
+
 		<div th:if="${mother != null}">
 			<div class="mother-card">
 				<div class="mother-info">
@@ -30,11 +30,10 @@
 						Родов: <span th:text="${mother.numberOfDeliveries}"></span>
 					</p>
 				</div>
-				
+
 				<div class="newborns-list">
 					<h4>Дети:</h4>
-					<div
-						th:if="${patients != null and !patients.isEmpty()}">
+					<div th:if="${patients != null and !patients.isEmpty()}">
 						<div th:each="newborn : ${patients}" class="newborn-card">
 							<p>
 								Пол: <span
@@ -44,10 +43,15 @@
 								Дата рождения: <span
 									th:text="${#temporals.format(newborn.dateOfBirth, 'dd.MM.yyyy HH:mm')}"></span>
 							</p>
+							<div class="scales-info">
+								<a
+									th:href="@{/scale/results/{patientId}(patientId=${newborn.id})}"
+									class="scale-button"> Просмотреть результаты шкал </a>
+							</div>
 						</div>
+
 					</div>
-					<div
-						th:if="${patients == null or patients.isEmpty()}"
+					<div th:if="${patients == null or patients.isEmpty()}"
 						class="no-newborns-message">
 						<p>Нет данных о новорожденных</p>
 					</div>

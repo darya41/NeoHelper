@@ -9,12 +9,15 @@ body {
 	align-items: center;
 	padding-top: 50px;
 }
+.error, .error-message{
+	color:red;
+}
 
 .container {
 	max-width: 100%;
 	background-color: white;
 	border-radius: 10px;
-	padding: 20px;
+	padding: 32px 16px;
 }
 
 .header {
@@ -28,15 +31,6 @@ body {
 	font-size: 24px;
 	font-weight: bold;
 	color: white;
-}
-
-.container {
-	padding: 32px 16px;
-}
-
-.content {
-	margin-bottom: 24px;
-	text-align: center;
 }
 
 .description {
@@ -64,6 +58,7 @@ body {
 
 .form-group {
 	margin-bottom: 16px;
+	margin-right:20px;
 }
 
 label {
@@ -148,6 +143,8 @@ label {
 	width: 90%;
 	margin: 0 auto;
 	padding: 24px;
+	margin-bottom: 24px;
+	text-align: center;
 }
 
 .centered-items {
@@ -679,50 +676,252 @@ h2 {
 
 .submit-button {
 	padding: 10px 20px;
-	background: #4CAF50;
+	background: #0077b6;
 	color: white;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 }
 
-.submit-button:hover {
-	background: #45a049;
-}
-
-
-
 /* add patient */
-
-
-
 form {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .form-group {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 input[type="text"], select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
 }
 
 button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
+	background-color: #0077b6;
+	color: white;
+	border: none;
+	padding: 12px;
+	border-radius: 6px;
+	font-size: 16px;
+	cursor: pointer;
 }
 
-button:hover {
-    background-color: #218838;
+.newborn-card {
+	border: 2px solid #007bff;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	background-color: #f8f9fa;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.add-newborn-button {
+	display: inline-block;
+	background-color: #007bff;
+	color: white;
+	padding: 10px 15px;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 5px;
+	transition: background 0.3s ease;
+}
+
+
+/*patients*/
+.newborn-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    }
+    
+    .newborn-info {
+        flex: 1;
+    }
+    
+    .scales-info {
+        position: relative;
+    }
+    
+    .scale-button {
+        display: flex;
+        align-items: center;
+        padding: 6px 12px;
+        background-color:  #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .scale-button:hover {
+        background-color: #45a049;
+    }
+    
+    .scale-name {
+        margin-right: 5px;
+    }
+    
+    .scale-count {
+        background-color: white;
+        color: #4CAF50;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    
+    /*scale*/
+      h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .info-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .children-list {
+            margin-top: 15px;
+        }
+        
+        .child-item {
+            background-color: #e8f4fc;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .action-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .add-button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        /* add scale */
+        
+        
+         .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .scale-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .parameter-group {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .parameter-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        .option-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .option-item input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .patient-info {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
